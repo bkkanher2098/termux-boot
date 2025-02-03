@@ -1,0 +1,13 @@
+import socket
+
+def get_my_ip():
+    """अपने System का IP Address प्राप्त करें"""
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(("8.8.8.8", 80))  # Google DNS से कनेक्ट करें
+    ip = s.getsockname()[0]
+    s.close()
+    return ip
+
+# IP Address Print करें
+my_ip = get_my_ip()
+print(f"My IP: {my_ip}")
